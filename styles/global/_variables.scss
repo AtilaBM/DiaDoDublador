@@ -24,6 +24,12 @@ $color-accent:    #BF967E; // Cor de ação / chamada (Rosy Brown)
 
 
 
+//Padrões
+
+@mixin margin {
+  margin-right: 15%;
+  margin-left: 15%;
+}
 
 @mixin flex-center($direction) {
   display: flex;

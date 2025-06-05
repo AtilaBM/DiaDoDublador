@@ -17,9 +17,7 @@
   margin: 0;
   // padding: 0;
 }
-section{
-  @include margin();
-}
+
 /* 3. Enable keyword animations */
 @media (prefers-reduced-motion: no-preference) {
   html {
