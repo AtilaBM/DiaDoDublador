@@ -14,4 +14,4 @@ Este site tem como propósito celebrar o **Dia do Dublador (29 de junho)**, home
 
 -   HTML5
 -   SCSS (Sass)
--   CSS3
+-   JavaScript

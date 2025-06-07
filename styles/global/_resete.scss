@@ -1,8 +1,9 @@
-@use './variables';
 
-@mixin margin {
-  margin-right: 15%;
-  margin-left: 15%;
+li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
 }
 
 /* 1. Use a more-intuitive box-sizing model */
@@ -15,7 +16,7 @@
 /* 2. Remove default margin */
 * {
   margin: 0;
-  // padding: 0;
+  padding: 0;
 }
 
 /* 3. Enable keyword animations */

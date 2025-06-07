@@ -9,18 +9,15 @@
   font-weight: 400;
 
 }
-@mixin interBold700(){
-  font-family: 'Inter',sans-serif;
-  font-weight: 700;
-}
+
 
 //Colors
 
-$color-primary:   #010A26; // Fundo escuro principal (Rich Black)
-$color-secondary: #406973; // Cor de destaque suave (Slate Gray)
-$color-tertiary:  #163C40; // Cor de suporte escura (Deep Teal)
-$color-light:     #F0F2F1; // Fundo claro / texto claro (Cultured)
-$color-accent:    #BF967E; // Cor de ação / chamada (Rosy Brown)
+$color-primary:   #010A26; 
+$color-secondary: #406973; 
+$color-tertiary:  #163C40; 
+$color-light:     #F0F2F1; 
+$color-accent:    #BF967E; 
 
 
 
