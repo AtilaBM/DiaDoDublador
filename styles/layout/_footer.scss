@@ -3,7 +3,7 @@
 .footer {
   position: relative;
   width: 100%;
-  background: $color-tertiary;
+  background: $color-accent;
   min-height: 100px;
   padding: 20px 50px;
   display: flex;
@@ -31,6 +31,7 @@
   }
 
   .menu__link:hover {
+    color: $color-main;
     opacity: 1;
   }
 

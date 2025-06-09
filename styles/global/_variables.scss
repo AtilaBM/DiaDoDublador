@@ -19,6 +19,7 @@ $color-Secondary: #252625;
 $color-tertiary: #585959;
 $color-light: #d9d9d9;
 $color-accent: #0d0d0d;
+$color-main: #8a4fff;
 
 //Padrões
 
@@ -36,5 +37,6 @@ $color-accent: #0d0d0d;
 //
 
 body {
-  background-color: $color-Secondary;
+  // background-color: $color-Secondary;
+  background: linear-gradient(135deg, #0f0f10 0%, #1a1a1a 100%);
 }

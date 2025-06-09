@@ -1,37 +1,74 @@
-@use '../../global/variables' as *;
+@use "../../global/variables" as *;
 
 .mainSection,
-.secondSection{
-   @include margin;
-   margin-top: 5rem;
-   margin-bottom: 5rem;
+.secondSection {
+  @include margin;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
 
-   
-   h1,h2,h3{
-      @include montserrat700;
-      color: $color-light;
-   }
-   p{
-      color: $color-light;
-      @include interRegular400;
-   }
+  h1,
+  h2 {
+    @include montserrat700;
+    color: $color-light;
+  }
+  span {
+    color: $color-main;
+  }
+  p {
+    color: $color-light;
+    @include interRegular400;
+    font-size: 0.95rem;
+  }
 }
 
-.mainSection{
-   display: flex;
-   
-div{
-   flex-direction: column;
-   align-items: center;
+.mainSection {
+  display: flex;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  h1 {
+    font-size: 4rem;
+  }
+  p {
+    text-align: center;
+    font-size: 1.1rem;
+    text-align: center;
+  }
+  a {
+    margin: 20px 0;
+  }
+  .cta-button {
+    @include interRegular400;
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: #8a4fff;
+    color: $color-light;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #7928f3;
+    }
+  }
 }
-   h1{
-      font-size: 4rem;
 
-   }
-   p{
-      font-size: 1.1rem;
-      text-align: justify;
-   }
+.secondSection {
+  p {
+    font-size: 1.1rem;
+    text-align: justify;
+  }
+  h2 {
+    font-size: 1.9rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+    @include montserrat700;
+    color: $color-main;
+    margin: 20px 0 5px 0;
+  }
 }
-
-

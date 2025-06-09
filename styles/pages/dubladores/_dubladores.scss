@@ -1,0 +1,86 @@
+@use "../../global/variables" as *;
+.dubsSection {
+  @include margin;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+
+  span {
+    color: $color-main;
+  }
+
+  h2 {
+    @include montserrat700; // Assuming this mixin exists and you want it for h2
+    color: $color-light; // Assuming this variable exists
+    font-size: 1.9rem; // Applying a suitable font size, similar to .secondSection h2
+    text-transform: capitalize;
+  }
+
+  article {
+    position: relative;
+    background-attachment: fixed; /* efeito parallax */
+    min-height: 400px; /* ajuste conforme seu gosto */
+    padding: 20px;
+    color: $color-light;
+    margin: 20px 0;
+
+    h3{
+        @include montserrat700;
+        font-size: 1.2rem;
+        margin-bottom: 5px
+    }
+    p{
+        @include interRegular400;
+        text-align: justify;
+    }
+  }
+
+   article > div {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+ article > div > div:first-child {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+ article > div > div:first-child > div {
+    flex: 1;
+}
+
+ article > div > div:first-child > div img {
+    width: 100%;
+    max-width: 200px;
+    border-radius: 10px;
+}
+
+ article > div > div:nth-child(2) {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+ article > div > div:nth-child(2) img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+audio {
+    width: 100%;
+    max-width: 400px;
+    background-color: #f0f0f0;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
+
+}

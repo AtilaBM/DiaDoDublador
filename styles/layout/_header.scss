@@ -5,7 +5,21 @@ header{
     display: flex;
     align-items: center;
     justify-content: space-around;
-    margin-top: 20px
+    margin-top: 20px;
+
+    .logo{
+      margin: 0;
+      padding: 0;
+      // border: 1px solid $color-light;
+      width: 200px;
+
+      img{
+        margin: 0;
+      padding: 0;
+        //  border: 1px solid $color-light;
+        width: 200px;
+      }
+    }
 }
 .snip1465 {
   @include montserrat700;
@@ -58,7 +72,7 @@ header{
 .snip1465 li:after,
 .snip1465 a:before,
 .snip1465 a:after {
-  background-color: $color-primary;
+  background-color: $color-main;
   position: absolute;
   height: 25%;
   left: 50%;
