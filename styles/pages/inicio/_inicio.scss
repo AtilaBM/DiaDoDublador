@@ -1,3 +1,37 @@
-@use '../global/variables' as *;
+@use '../../global/variables' as *;
+
+.mainSection,
+.secondSection{
+   @include margin;
+   margin-top: 5rem;
+   margin-bottom: 5rem;
+
+   
+   h1,h2,h3{
+      @include montserrat700;
+      color: $color-light;
+   }
+   p{
+      color: $color-light;
+      @include interRegular400;
+   }
+}
+
+.mainSection{
+   display: flex;
+   
+div{
+   flex-direction: column;
+   align-items: center;
+}
+   h1{
+      font-size: 4rem;
+
+   }
+   p{
+      font-size: 1.1rem;
+      text-align: justify;
+   }
+}
 
 

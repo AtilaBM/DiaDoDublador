@@ -1,25 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 //Fonts
-
-
-@mixin interRegular400(){
-  font-family: 'Inter',sans-serif;
-  font-weight: 400;
-
+@mixin montserrat700(){
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  
 }
-
+@mixin interRegular400() {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+}
 
 //Colors
 
-$color-primary:   #010A26; 
-$color-secondary: #406973; 
-$color-tertiary:  #163C40; 
-$color-light:     #F0F2F1; 
-$color-accent:    #BF967E; 
-
-
+$color-primary: #8c8c8c;
+$color-Secondary: #252625;
+$color-tertiary: #585959;
+$color-light: #d9d9d9;
+$color-accent: #0d0d0d;
 
 //Padrões
 
@@ -32,4 +31,10 @@ $color-accent:    #BF967E;
   display: flex;
   justify-content: center;
   flex-direction: $direction;
+}
+
+//
+
+body {
+  background-color: $color-Secondary;
 }

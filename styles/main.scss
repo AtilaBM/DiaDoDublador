@@ -7,9 +7,13 @@
 
 
 // Layout
-
+@use './layout/footer';
+@use './layout/header';
 
 
 // Pages
+@use './pages/dubladores/dubladores';
+@use './pages/sobre/sobre';
+@use './pages/inicio/inicio';
 
 
