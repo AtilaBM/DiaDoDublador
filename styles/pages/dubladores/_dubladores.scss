@@ -1,4 +1,5 @@
-@use "../../global/variables" as *;
+@use "../../global/variables" as *; // Assuming your variables are correctly imported
+
 .dubsSection {
   @include margin;
   margin-top: 5rem;
@@ -9,78 +10,248 @@
   }
 
   h2 {
-    @include montserrat700; // Assuming this mixin exists and you want it for h2
-    color: $color-light; // Assuming this variable exists
-    font-size: 1.9rem; // Applying a suitable font size, similar to .secondSection h2
+    @include montserrat700;
+    color: $color-light;
+    font-size: 1.9rem;
     text-transform: capitalize;
   }
 
   article {
     position: relative;
-    background-attachment: fixed; /* efeito parallax */
-    min-height: 400px; /* ajuste conforme seu gosto */
+    /* background-attachment: fixed; */ /* Removed for potentially better performance/control with internal carousels */
+    /* min-height: 400px; */ /* Let content define height, or define specific height for image wrapper */
     padding: 20px;
     color: $color-light;
     margin: 20px 0;
+    background-color: #1a1a1a; /* A darker background for each article for better visual separation */
+    border-radius: 10px; /* Consistent border-radius for the article itself */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Enhanced shadow for the article */
 
-    h3{
-        @include montserrat700;
-        font-size: 1.2rem;
-        margin-bottom: 5px
+    h3 {
+      @include montserrat700;
+      font-size: 1.2rem;
+      margin-bottom: 5px;
     }
-    p{
-        @include interRegular400;
-        text-align: justify;
+    p {
+      @include interRegular400;
+      text-align: justify;
+      margin-bottom: 15px; /* Add some space below paragraphs */
     }
   }
 
-   article > div {
-    padding: 20px;
+  article > div {
+    padding: 0; /* Remove padding from this inner div to let content dictate it */
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Stack main content and carrossel vertically */
     gap: 20px;
-}
+  }
 
- article > div > div:first-child {
+  /* First div inside article > div, contains main image and dubber info */
+  article > div > div:first-child {
     display: flex;
-    align-items: flex-start;
+    align-items: flex-start; /* Align items to the top */
     gap: 20px;
-}
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    padding: 20px; /* Add padding here for content */
+  }
 
- article > div > div:first-child > div {
-    flex: 1;
-}
-
- article > div > div:first-child > div img {
-    width: 100%;
-    max-width: 200px;
-    border-radius: 10px;
-}
-
- article > div > div:nth-child(2) {
+  /* Wrapper for the main dubber profile image */
+  .main-image-wrapper {
+    flex-shrink: 0;
+    width: 250px; /* Fixed width for the profile image container */
+    height: 250px; /* Fixed height for the profile image container */
+    overflow: hidden;
+    border-radius: 50%; /* Make it circular for profile images */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    background-color: #333;
     display: flex;
-    overflow-x: auto;
-    gap: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-}
+    justify-content: center;
+    align-items: center;
+    border: 3px solid $color-main; /* Accent border for the profile image */
+  }
 
- article > div > div:nth-child(2) img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-audio {
+  .main-image-wrapper img {
     width: 100%;
-    max-width: 400px;
-    background-color: #f0f0f0;
+    height: 100%;
+    object-fit: cover; /* Ensures image fills the circular container */
+    display: block;
+    border-radius: inherit; /* Inherits the circular border-radius */
+  }
+
+  /* Div containing the dubber's text info and audio player */
+  article > div > div:first-child > div:not(.main-image-wrapper) {
+    flex: 1; /* Allows this content to take available space */
+    min-width: 280px; /* Ensures text content doesn't get too narrow */
+  }
+
+  audio {
+    width: 100%;
+    max-width: 400px; /* Limit audio player width */
+    background-color: #f0f0f0; /* Light background for the player */
     border: 2px solid #ccc;
     border-radius: 10px;
     padding: 5px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
-}
+    display: block; /* Ensures it takes its own line */
+    margin-left: 0; /* Align left */
+    margin-right: auto; /* Push to left */
+  }
 
+  // General styling for carousels within this section
+  .character-carousel-container {
+    width: 90%; /* Adjust width relative to its parent article */
+    max-width: 600px; /* Max width for the carousel itself */
+    margin: 20px auto; /* Center the carousel within the article */
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4); /* Shadow for the carousel container */
+    background-color: #222; /* Slightly darker background for the carousel area */
+    height: 350px; /* Fixed height for character carousels */
+    /* If you want responsive height for the carousel, use:
+    padding-bottom: 56.25%; // 16:9 aspect ratio
+    height: 0;
+    */
+  }
+
+  .carrousel {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100%; /* Fill the height of .character-carousel-container */
+  }
+
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.7s ease-in-out; /* Smooth fade transition */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #111; /* Fallback background for slides */
+  }
+
+  .slide.current {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .carrousel div.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Use 'contain' for characters to ensure they are fully visible without cropping */
+    display: block;
+    border-radius: 5px; /* Slight border-radius for character images */
+  }
+
+  .controls {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    z-index: 2;
+  }
+
+  .controls button {
+    border: none;
+    border-radius: 50%; /* Circular buttons */
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    cursor: pointer;
+    font-size: 2rem;
+    height: 50px; /* Smaller, more compact buttons */
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .controls button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    transform: scale(1.1);
+  }
+
+  .circles {
+    bottom: 15px; /* Position indicators from the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    position: absolute;
+    z-index: 2;
+    justify-content: center;
+  }
+
+  .circle {
+    background-color: rgba(255, 255, 255, 0.6);
+    height: 10px;
+    width: 10px;
+    border-radius: 100%;
+    transition: all 0.2s ease-in;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+  }
+
+  .circle.active {
+    background-color: white;
+    transform: scale(1.3);
+    border-color: $color-main; /* Active circle gets the main accent color border */
+  }
+
+  /* Media Queries for Responsiveness */
+  @media (max-width: 768px) {
+    article > div > div:first-child {
+      flex-direction: column; /* Stack image and text vertically on smaller screens */
+      align-items: center; /* Center items when stacked */
+      text-align: center;
+    }
+
+    .main-image-wrapper {
+      width: 200px; /* Slightly smaller profile image */
+      height: 200px;
+    }
+
+    .character-carousel-container {
+      width: 95%; /* Take more width on smaller screens */
+      height: 250px; /* Adjust carousel height for mobile */
+    }
+
+    .controls button {
+      height: 40px;
+      width: 40px;
+      font-size: 1.5rem;
+    }
+
+    .circles {
+      bottom: 10px; /* Move circles up slightly */
+    }
+  }
+
+  @media (max-width: 480px) {
+    article {
+      padding: 15px; /* Reduce padding for very small screens */
+      margin: 3rem 0; /* Adjust margin */
+    }
+
+    h3 {
+      font-size: 1.1rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+    }
+
+    .character-carousel-container {
+      height: 200px; /* Even smaller carousel height */
+    }
+  }
 }
